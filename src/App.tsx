@@ -1,7 +1,9 @@
+import { Route, Routes } from "react-router-dom";
 import { Menu } from "./components/menu";
 import { Sidebar } from "./components/sidebar";
 import { playlists } from "./data/playlists";
 import { Home } from "./pages/Home";
+import LikedSongs from "./pages/LikedSongs";
 
 // export const metadata: Metadata = {
 //   title: "Music App",
@@ -34,7 +36,21 @@ export default function MusicPage() {
               <Sidebar playlists={playlists} className="hidden lg:block" />
               <div className="col-span-3 lg:col-span-4 lg:border-l">
                 <Menu />
-                <Home />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/likedsongs">
+                    <Route index element={<LikedSongs />} />
+                    {/* <Route path=":id/categories">
+                      <Route index element={<MenuCategoriesPage />} />
+                      <Route
+                        path=":category_id/items"
+                        element={<MenuItemsPage />}
+                      />
+                    </Route>
+                    <Route /> */}
+                  </Route>
+                </Routes>
+                {/* <Home /> */}
               </div>
             </div>
           </div>

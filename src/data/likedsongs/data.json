@@ -1,0 +1,146 @@
+[
+  {
+    "id": "1",
+    "title": "Send Me on My Way",
+    "artist": "Rusted Root",
+    "image": "1",
+    "album": "When I Woke",
+    "duration": "4:23",
+    "dateAdded": "Nov 10, 2021"
+  },
+  {
+    "id": "2",
+    "title": "La vie en rose",
+    "artist": "Louis Armstrong",
+    "image": "2",
+    "album": "C'est Si Bon",
+    "duration": "3:27",
+    "dateAdded": "Mar 31, 2020"
+  },
+  {
+    "id": "3",
+    "title": "Boys That Sing",
+    "artist": "Viola Beach",
+    "image": "3",
+    "album": "Viola Beach",
+    "duration": "3:16",
+    "dateAdded": "Jun 24, 2021"
+  },
+  {
+    "id": "4",
+    "title": "Trees",
+    "artist": "Twenty One Pilots",
+    "image": "4",
+    "album": "Vessel (with Bonus Tracks)",
+    "duration": "4:27",
+    "dateAdded": "Feb 12, 2021"
+  },
+  {
+    "id": "5",
+    "title": "Screen",
+    "artist": "Twenty One Pilots",
+    "image": "5",
+    "album": "Vessel (with Bonus Tracks)",
+    "duration": "3:49",
+    "dateAdded": "Jun 4, 2021"
+  },
+  {
+    "id": "6",
+    "title": "My Lighthouse - Acoustic Version",
+    "artist": "Rend Collective",
+    "image": "6",
+    "album": "My Lighthouse - Acoustic Version",
+    "duration": "3:40",
+    "dateAdded": "Nov 17, 2021"
+  },
+  {
+    "id": "7",
+    "title": "Happy Ending",
+    "artist": "MIKA",
+    "image": "7",
+    "album": "Life In Cartoon Motion",
+    "duration": "4:34",
+    "dateAdded": "Oct 19, 2021"
+  },
+  {
+    "id": "8",
+    "title": "You Can Call Me Al",
+    "artist": "Paul Simon",
+    "image": "8",
+    "album": "Graceland",
+    "duration": "4:40",
+    "dateAdded": "Mar 17, 2020"
+  },
+  {
+    "id": "9",
+    "title": "Mr. Blue Sky",
+    "artist": "Electric Light Orchestra",
+    "image": "9",
+    "album": "Out of the Blue",
+    "duration": "5:03",
+    "dateAdded": "Mar 24, 2020"
+  },
+  {
+    "id": "10",
+    "title": "The Power Of Love",
+    "artist": "Huey Lewis & The News",
+    "image": "10",
+    "album": "Collected",
+    "duration": "3:54",
+    "dateAdded": "Mar 17, 2020"
+  },
+  {
+    "id": "11",
+    "title": "Tarzan Boy",
+    "artist": "Baltimora",
+    "image": "11",
+    "album": "Living In The Background",
+    "duration": "6:19",
+    "dateAdded": "Mar 17, 2020"
+  },
+  {
+    "id": "12",
+    "title": "Accidentally In Love",
+    "artist": "Counting Crows",
+    "image": "12",
+    "album": "Accidentally In Love",
+    "duration": "3:08",
+    "dateAdded": "Mar 15, 2022"
+  },
+  {
+    "id": "13",
+    "title": "Don't Stop Me Now - Remastered 2011",
+    "artist": "Queen",
+    "image": "13",
+    "album": "Jazz (2011 Remastered)",
+    "duration": "3:29",
+    "dateAdded": "Apr 17, 2022"
+  },
+  {
+    "id": "14",
+    "title": "Sir Duke",
+    "artist": "Stevie Wonder",
+    "image": "14",
+    "album": "Songs In The Key Of Life",
+    "duration": "3:53",
+    "dateAdded": "Oct 25, 2022"
+  },
+  {
+    "id": "15",
+    "title": "Something About Her",
+    "artist": "The Kents",
+    "image": "15",
+    "album": "Something About Her",
+    "duration": "3:46",
+    "dateAdded": "Jan 25, 2022"
+  },
+  {
+    "id": "16",
+    "title": "Faster Ride",
+    "artist": "Cartel",
+    "image": "16",
+    "album": "Cycles",
+    "duration": "3:29",
+    "dateAdded": "Jan 25, 2023"
+  }
+]
