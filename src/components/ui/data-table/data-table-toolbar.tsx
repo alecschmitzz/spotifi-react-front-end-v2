@@ -6,6 +6,7 @@ import { DataTableViewOptions } from "./data-table-view-options";
 
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { XIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type ColumnFilterOptions = {
   [key: string]: { label: string; value: string }[];
@@ -15,12 +16,14 @@ interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   columnFilterOptions?: ColumnFilterOptions;
   filterColumn: string;
+  addLink?: string;
 }
 
 export function DataTableToolbar<TData>({
   table,
   columnFilterOptions,
   filterColumn,
+  addLink,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
@@ -73,6 +76,11 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
+      {addLink && (
+        <Link to={addLink}>
+          <Button type="button">Add</Button>
+        </Link>
+      )}
       <DataTableViewOptions table={table} />
     </div>
   );

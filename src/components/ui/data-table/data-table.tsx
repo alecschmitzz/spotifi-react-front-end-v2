@@ -35,6 +35,8 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   columnFilterOptions?: ColumnFilterOptions;
   filterColumn: string;
+  handleRemoveRow?: (id: string) => void;
+  addLink?: string;
 }
 
 export function DataTable<TData, TValue>({
@@ -42,6 +44,8 @@ export function DataTable<TData, TValue>({
   data,
   columnFilterOptions,
   filterColumn,
+  handleRemoveRow,
+  addLink,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -68,6 +72,15 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    meta: {
+      removeRow: (id: string) => {
+        if (handleRemoveRow) {
+          handleRemoveRow(id); // Replace 123 with the actual argument
+        } else {
+          console.error("handleRemoveRow is not defined.");
+        }
+      },
+    },
   });
 
   return (
@@ -76,6 +89,7 @@ export function DataTable<TData, TValue>({
         table={table}
         columnFilterOptions={columnFilterOptions}
         filterColumn={filterColumn}
+        addLink={addLink}
       />
       <div className="rounded-md border">
         <Table>
@@ -100,9 +114,6 @@ export function DataTable<TData, TValue>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                
-
-                
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}

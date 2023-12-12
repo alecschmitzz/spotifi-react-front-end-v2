@@ -44,9 +44,9 @@ export function Home({}: PageProps) {
           <div className="relative">
             <ScrollArea>
               <div className="flex space-x-6 pb-4">
-                {listenNowAlbums.map((album) => (
+                {listenNowAlbums.map((album, i) => (
                   <AlbumArtwork
-                    key={album.name}
+                    key={`${album.name} - ${i}`}
                     album={album}
                     className="w-[250px]"
                     aspectRatio="square"
@@ -70,9 +70,9 @@ export function Home({}: PageProps) {
           <div className="relative">
             <ScrollArea>
               <div className="flex space-x-4 pb-4">
-                {madeForYouAlbums.map((album) => (
+                {madeForYouAlbums.map((album, i) => (
                   <AlbumArtwork
-                    key={album.name}
+                    key={`${album.name} - ${i}`}
                     album={album}
                     className="w-[150px]"
                     aspectRatio="square"

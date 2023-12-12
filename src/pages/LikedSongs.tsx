@@ -1,7 +1,7 @@
 import {
   columns,
   columnFilterOptions,
-} from "@/components/data-table/likedsongs/columns";
+} from "@/components/data-table/songs/columns";
 import { DataTable } from "@/components/ui/data-table/data-table";
 import { useEffect, useState } from "react";
 

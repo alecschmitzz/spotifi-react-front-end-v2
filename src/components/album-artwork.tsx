@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/context-menu";
 
 import { Album } from "../data/albums";
-import { playlists } from "../data/playlists";
+import { useContext } from "react";
+import { PlaylistContext } from "@/context/PlaylistProvider";
+// import { playlists } from "../data/myplaylists";
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
   album: Album;
@@ -30,6 +32,7 @@ export function AlbumArtwork({
   className,
   ...props
 }: AlbumArtworkProps) {
+  const { playlists } = useContext(PlaylistContext);
   return (
     <div className={cn("space-y-3", className)} {...props}>
       <ContextMenu>
@@ -57,7 +60,7 @@ export function AlbumArtwork({
               </ContextMenuItem>
               <ContextMenuSeparator />
               {playlists.map((playlist) => (
-                <ContextMenuItem key={playlist}>
+                <ContextMenuItem key={playlist.title}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -70,7 +73,7 @@ export function AlbumArtwork({
                   >
                     <path d="M21 15V6M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM12 12H3M16 6H3M12 18H3" />
                   </svg>
-                  {playlist}
+                  {playlist.title}
                 </ContextMenuItem>
               ))}
             </ContextMenuSubContent>

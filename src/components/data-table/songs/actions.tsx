@@ -14,7 +14,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { MoreHorizontalIcon, PlusCircleIcon } from "lucide-react";
-import { playlists } from "@/data/playlists";
+import { useContext } from "react";
+import { PlaylistContext } from "@/context/PlaylistProvider";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -23,6 +24,7 @@ interface DataTableRowActionsProps<TData> {
 export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
+  const { playlists } = useContext(PlaylistContext);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -42,8 +44,8 @@ export function DataTableRowActions<TData>({
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
-              {playlists.map((playlist, index) => (
-                <DropdownMenuItem key={playlist + index}>
+              {playlists.map((playlist) => (
+                <DropdownMenuItem key={playlist.id}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -56,7 +58,7 @@ export function DataTableRowActions<TData>({
                   >
                     <path d="M21 15V6M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM12 12H3M16 6H3M12 18H3" />
                   </svg>
-                  {playlist}
+                  {playlist.title}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuSubContent>

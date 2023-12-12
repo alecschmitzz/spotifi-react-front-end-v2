@@ -5,20 +5,49 @@ import {
   HomeIcon,
   SearchIcon,
   ListMusicIcon,
-  Music2Icon,
-  Music3Icon,
   Music4Icon,
   HistoryIcon,
 } from "lucide-react";
-
-import { Playlist } from "../data/playlists";
 import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useRef } from "react";
+import { playlistService } from "@/_services";
+import { PlaylistContext } from "@/context/PlaylistProvider";
 
-interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  playlists: Playlist[];
-}
+export function Sidebar({ className }: React.HTMLAttributes<HTMLDivElement>) {
+  const { playlists, setPlaylists } = useContext(PlaylistContext);
+  const effectRun = useRef(false);
 
-export function Sidebar({ className, playlists }: SidebarProps) {
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const getPlaylists = async () =>
+      playlistService
+        .getAll(signal)
+        .then((data) => {
+          setPlaylists(data);
+          console.log(data);
+        })
+        .catch((error) => {
+          if (error.name === "AbortError") {
+            console.log("Request aborted");
+          } else {
+            console.error("Error fetching playlists:", error);
+          }
+        });
+
+    // Check if useEffect has run the first time
+    if (effectRun.current) {
+      getPlaylists();
+    }
+
+    // Cleanup function to abort the request when the component unmounts
+    return () => {
+      controller.abort();
+      effectRun.current = true; // update the value of effectRun to true
+    };
+  }, []); // Empty dependency array since we only want to fetch once on mount
+
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">
@@ -51,10 +80,17 @@ export function Sidebar({ className, playlists }: SidebarProps) {
             My Music
           </h2>
           <div className="space-y-1">
-            <Button variant="ghost" className="w-full justify-start">
-              <ListMusicIcon size={18} className="me-2" />
-              Playlists
-            </Button>
+            <NavLink to="/playlists/">
+              {({ isActive }) => (
+                <Button
+                  variant={isActive ? "secondary" : "ghost"}
+                  className="w-full justify-start"
+                >
+                  <ListMusicIcon size={18} className="me-2" />
+                  Playlists
+                </Button>
+              )}
+            </NavLink>
 
             <NavLink to="/likedsongs">
               {({ isActive }) => (
@@ -74,25 +110,31 @@ export function Sidebar({ className, playlists }: SidebarProps) {
             </Button>
           </div>
         </div>
-        {/* <div className="py-2">
+        <div className="py-2">
           <h2 className="relative px-7 text-lg font-semibold tracking-tight">
             Playlists
           </h2>
           <ScrollArea className="h-[300px] px-1">
             <div className="space-y-1 p-2">
-              {playlists?.map((playlist, i) => (
-                <Button
-                  key={`${playlist}-${i}`}
-                  variant="ghost"
-                  className="w-full justify-start font-normal"
+              {playlists?.map((playlist) => (
+                <NavLink
+                  to={`/playlists/${playlist.id}`}
+                  key={`${playlist.id}`}
                 >
-                  <ListMusicIcon size={18} className="me-2" />
-                  <span className="whitespace-nowrap truncate block w-[200px] text-left">{playlist}</span>
-                </Button>
+                  {({ isActive }) => (
+                    <Button
+                      variant={isActive ? "secondary" : "ghost"}
+                      className="w-full justify-start"
+                    >
+                      <ListMusicIcon size={18} className="me-2" />
+                      {playlist.title}
+                    </Button>
+                  )}
+                </NavLink>
               ))}
             </div>
           </ScrollArea>
-        </div> */}
+        </div>
       </div>
     </div>
   );

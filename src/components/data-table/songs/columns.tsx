@@ -1,12 +1,12 @@
 import { ColumnDef, Row } from "@tanstack/react-table";
 
-import { LikedSongs } from "../../../data/likedsongs/schema";
+import { Song } from "../../../data/songs/schema";
 import { DataTableColumnHeader } from "../../ui/data-table/data-table-column-header";
 import { DataTableRowActions } from "./actions";
 import { HeartIcon } from "lucide-react";
 import { useState } from "react";
 
-export const columns: ColumnDef<LikedSongs>[] = [
+export const columns: ColumnDef<Song>[] = [
   {
     accessorKey: "index",
     header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
@@ -140,7 +140,7 @@ export const columns: ColumnDef<LikedSongs>[] = [
   },
 ];
 
-function handleRowClick(row: Row<LikedSongs>) {
+function handleRowClick(row: Row<Song>) {
   console.log("Row clicked:", row.original);
 }
 
